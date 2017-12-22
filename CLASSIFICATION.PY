@@ -19,7 +19,7 @@ classifier.fit(counts,y_train)
 #READING THE TEST DATA
 f=pd.read_csv('test1.csv',encoding='latin-1')
 #READING THE ACTUAL RESULT
-actual result =pd.read_csv('actual.csv',encoding='latin-1')
+actual=pd.read_csv('actual.csv',encoding='latin-1')
 classification = {"ham":0,"spam":1,"info":2}
 actual['Label']=actual['Label'].map(classification)
 test=f["Message"]
