@@ -18,17 +18,18 @@ classifier.fit(counts,y_train)
 
 #READING THE TEST DATA
 f=pd.read_csv('test1.csv',encoding='latin-1')
+test=f["Message"]
 #READING THE ACTUAL RESULT
 actual=pd.read_csv('actual.csv',encoding='latin-1')
 classification = {"ham":0,"spam":1,"info":2}
 actual['Label']=actual['Label'].map(classification)
-test=f["Message"]
+
 #PASSING
 counts_test = vectorizer.transform(test)
 prediction = classifier.predict(counts_test)
 #ACCURACY
 print('Accuracy score: {}'.format(accuracy_score(actual, prediction)))
-d1=pd.DataFrame({"Label":prediction})
+d1=pd.DataFrame({"Message":test,"Label":prediction})
 classification = {0:"ham",1:"spam",2:"info"}
 #OUTPUT WRIITEN TO CSV FILE
 d1['Label']=d1['Label'].map(classification)
